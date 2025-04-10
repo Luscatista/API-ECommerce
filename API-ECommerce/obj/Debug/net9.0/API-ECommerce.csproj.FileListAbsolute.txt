@@ -160,3 +160,5 @@ C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\runtimes\
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECommerce.csproj.AssemblyReference.cache
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECom.5F7F2A60.Up2Date
+C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECommerce.sourcelink.json
+C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
