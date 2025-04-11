@@ -6,12 +6,10 @@ namespace API_ECommerce.Repositories;
 public class ProdutoRepository : IProdutoRepository
 {
     private readonly EcommerceContext _context;
-
     public ProdutoRepository(EcommerceContext context)
     {
         _context = context;
     }
-
     public List<Produto> ListarTodos()
     {
         return _context.Produtos.ToList();
