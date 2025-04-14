@@ -19,7 +19,7 @@ public class PagamentoRepository : IPagamentoRepository
     {
         throw new NotImplementedException();
     }
-    public void Cadastro(Pagamento pagamento)
+    public void Cadastrar(Pagamento pagamento)
     {
         throw new NotImplementedException();
     }

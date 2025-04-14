@@ -5,14 +5,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_ECommerce.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class PagamentoController : Controller
 {
-    private readonly EcommerceContext _context;
     private IPagamentoRepository _pagamentoRepository;
-    public PagamentoController(EcommerceContext context)
+    public PagamentoController(IPagamentoRepository pagamentoRepository)
     {
-        _context = context;
-        _pagamentoRepository = new PagamentoRepository(_context);
+        _pagamentoRepository = pagamentoRepository;
+    }
 
+    [HttpGet()]
+    public IActionResult ListarTodos()
+    {
+        return Ok(_pagamentoRepository.ListarTodos());
     }
 }

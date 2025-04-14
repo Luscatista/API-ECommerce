@@ -6,7 +6,7 @@ public interface IPedidoRepository
 {
     List<Pedido> ListarTodos();
     Pedido BuscarPorId(int id);
-    void Cadastro(Pedido pedido);
+    void Cadastrar(Pedido pedido);
     void Atualizar(int id, Pedido pedido);
     void Deletar(int id);
 }

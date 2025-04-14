@@ -1,5 +1,93 @@
 [
   {
+    "ContainingType": "API_ECommerce.Controllers.ClienteController",
+    "Method": "ListarTodos",
+    "RelativePath": "api/Cliente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.ClienteController",
+    "Method": "CadastrarCliente",
+    "RelativePath": "api/Cliente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cliente",
+        "Type": "API_ECommerce.Models.Cliente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.ItemPedidoController",
+    "Method": "ListarProdutos",
+    "RelativePath": "api/ItemPedido",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.ItemPedidoController",
+    "Method": "CadastrarProduto",
+    "RelativePath": "api/ItemPedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemPedido",
+        "Type": "API_ECommerce.Models.ItemPedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.PagamentoController",
+    "Method": "ListarTodos",
+    "RelativePath": "api/Pagamento",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.PedidoController",
+    "Method": "ListarPedidos",
+    "RelativePath": "api/Pedido",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.PedidoController",
+    "Method": "CadastrarProduto",
+    "RelativePath": "api/Pedido",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "API_ECommerce.Models.Pedido",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API_ECommerce.Controllers.ProdutoController",
     "Method": "ListarProdutos",
     "RelativePath": "api/Produto",
@@ -7,6 +95,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.ProdutoController",
+    "Method": "CadastrarProduto",
+    "RelativePath": "api/Produto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "API_ECommerce.Models.Produto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

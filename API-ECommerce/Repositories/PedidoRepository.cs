@@ -19,7 +19,7 @@ public class PedidoRepository : IPedidoRepository
     {
         throw new NotImplementedException();
     }
-    public void Cadastro(Pedido pedido)
+    public void Cadastrar(Pedido pedido)
     {
         throw new NotImplementedException();
     }

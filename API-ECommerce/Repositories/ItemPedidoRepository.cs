@@ -20,7 +20,7 @@ public class ItemPedidoRepository : IItemPedidoRepository
     {
         throw new NotImplementedException();
     }
-    public void Cadastro(ItemPedido itemPedido)
+    public void Cadastrar(ItemPedido itemPedido)
     {
         throw new NotImplementedException();
     }
