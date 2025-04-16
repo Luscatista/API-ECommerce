@@ -16,7 +16,7 @@ public class ProdutoRepository : IProdutoRepository
     }
     public Produto BuscarPorId(int id)
     {
-        throw new NotImplementedException();
+        return _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
     }
     public void Cadastrar(Produto produto)
     {
@@ -25,10 +25,32 @@ public class ProdutoRepository : IProdutoRepository
     }
     public void Atualizar(int id, Produto produto)
     {
+        var produtoAtual =  _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
+        if (produtoAtual == null)
+        {
+            throw new Exception();
+        }
 
+        produtoAtual.NomeProduto = produto.NomeProduto;
+        produtoAtual.Descricao = produto.Descricao;
+        produtoAtual.Preco = produto.Preco;
+        produtoAtual.Categoria = produto.Categoria;
+        produtoAtual.Imagem = produto.Imagem;
+        produtoAtual.EstoqueDisponivel = produto.EstoqueDisponivel;
+
+        _context.SaveChanges();
     }
     public void Deletar(int id)
     {
+        var produto = _context.Produtos.Find(id);
 
+        if(produto == null)
+        {
+            throw new Exception();
+        }
+
+        _context.Produtos.Remove(produto);
+
+        _context.SaveChanges();
     }
 }

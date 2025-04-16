@@ -14,11 +14,13 @@ public class ClienteRepository : IClienteRepository
     }
     public List<Cliente> ListarTodos()
     {
+        //ToList() - Pegar varios
         return _context.Clientes.ToList();
     }
     public Cliente BuscarPorId(int id)
     {
-        throw new NotImplementedException();
+        //FirstOrDefault() - Entrega o primeiro ou null
+        return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
     }
     public void Cadastrar(Cliente cliente)
     {

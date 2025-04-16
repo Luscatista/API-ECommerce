@@ -23,6 +23,18 @@ public class ProdutoController : ControllerBase
     {
         return Ok(_produtoRepository.ListarTodos());  
     }
+    
+    [HttpGet("{id}")]
+    public ActionResult ListarPorId(int id)
+    {
+        var produto = _produtoRepository.BuscarPorId(id);
+        if(produto == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(produto);
+    }
 
     [HttpPost]
     public IActionResult CadastrarProduto(Produto produto)
@@ -30,5 +42,33 @@ public class ProdutoController : ControllerBase
         _produtoRepository.Cadastrar(produto);
 
         return Created();
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Editar(int id, Produto produto)
+    {
+        try
+        {
+            _produtoRepository.Atualizar(id, produto);
+            return Ok(produto);
+        }
+        catch(Exception ex) 
+        {
+            return NotFound("Produto não encontrado.");
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        try 
+        {
+            _produtoRepository.Deletar(id);
+            return NoContent();
+        }
+        catch(Exception ex)
+        {
+            return NotFound("Produto não encontrado.");
+        }
     }
 }
