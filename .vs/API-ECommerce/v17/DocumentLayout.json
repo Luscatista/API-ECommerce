@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\fic\\source\\repos\\API-ECommerce\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7A0A2412-D847-4FFB-9CBA-BED1DE396DD8}|API-ECommerce\\API-ECommerce.csproj|c:\\users\\fic\\source\\repos\\api-ecommerce\\api-ecommerce\\repositories\\pagamentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A0A2412-D847-4FFB-9CBA-BED1DE396DD8}|API-ECommerce\\API-ECommerce.csproj|solutionrelative:api-ecommerce\\repositories\\pagamentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 241,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PagamentoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\fic\\source\\repos\\API-ECommerce\\API-ECommerce\\Repositories\\PagamentoRepository.cs",
+              "RelativeDocumentMoniker": "API-ECommerce\\Repositories\\PagamentoRepository.cs",
+              "ToolTip": "C:\\Users\\fic\\source\\repos\\API-ECommerce\\API-ECommerce\\Repositories\\PagamentoRepository.cs",
+              "RelativeToolTip": "API-ECommerce\\Repositories\\PagamentoRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAgwCoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T00:46:23.92Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

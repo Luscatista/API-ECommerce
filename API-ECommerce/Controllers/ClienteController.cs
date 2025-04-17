@@ -22,11 +22,50 @@ public class ClienteController : Controller
         return Ok(_clienteRepository.ListarTodos());
     }
 
+    [HttpGet("{id}")]
+    public IActionResult BuscarPorId(int id)
+    {
+        var cliente = _clienteRepository.BuscarPorId(id);
+        if (cliente == null)
+        {
+            return NotFound();
+        }
+        return Ok(cliente);
+    }
+
     [HttpPost]
     public IActionResult CadastrarCliente(Cliente cliente)
     {
         _clienteRepository.Cadastrar(cliente);
 
         return Created();
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Editar(int id, Cliente cliente)
+    {
+        try
+        {
+            _clienteRepository.Atualizar(id, cliente);
+            return Ok(cliente);
+        }
+        catch(Exception ex)
+        {
+            return NotFound("Cliente não encontrado.");
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Deletar(int id)
+    {
+        try
+        {
+            _clienteRepository.Deletar(id);
+            return NoContent();
+        }
+        catch(Exception ex)
+        {
+            return NotFound("Cliente não encontrado.");
+        }
     }
 }

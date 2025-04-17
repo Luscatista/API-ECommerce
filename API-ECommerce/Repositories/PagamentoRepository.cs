@@ -17,18 +17,40 @@ public class PagamentoRepository : IPagamentoRepository
     }
     public Pagamento BuscarPorId(int id)
     {
-        throw new NotImplementedException();
+        return _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
     }
     public void Cadastrar(Pagamento pagamento)
     {
-        throw new NotImplementedException();
+        _context.Pagamentos.Add(pagamento);
+        _context.SaveChanges();
     }
     public void Atualizar(int id, Pagamento pagamento)
     {
-        throw new NotImplementedException();
+        var pagamentoAtual = _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
+
+        if(pagamentoAtual == null)
+        {
+            throw new Exception();
+        }
+
+        pagamentoAtual.StatusPagamento = pagamento.StatusPagamento;
+        pagamentoAtual.FormaPagamento = pagamento.FormaPagamento;
+        pagamentoAtual.DataPagamento = pagamento.DataPagamento;
+        pagamentoAtual.IdPedido = pagamento.IdPedido;
+        
+        _context.SaveChanges();
     }
     public void Deletar(int id)
     {
-        throw new NotImplementedException();
+        var pagamento = _context.Pagamentos.Find(id);
+
+        if (pagamento != null)
+        {
+            throw new Exception();
+        }
+
+        _context.Pagamentos.Remove(pagamento);
+
+        _context.SaveChanges();
     }
 }

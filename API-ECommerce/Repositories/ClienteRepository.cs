@@ -29,7 +29,19 @@ public class ClienteRepository : IClienteRepository
     }
     public void Atualizar(int id, Cliente cliente)
     {
-        throw new NotImplementedException();
+        var clienteAtual = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
+        if (clienteAtual == null)
+        {
+            throw new Exception();
+        }
+
+        clienteAtual.NomeCompleto = cliente.NomeCompleto;
+        clienteAtual.Email = cliente.Email;
+        clienteAtual.Telefone = cliente.Telefone;
+        clienteAtual.Endereco = cliente.Endereco;
+        clienteAtual.DataCadastro = cliente.DataCadastro;
+
+        _context.SaveChanges();
     }
     public Cliente BuscarPorEmailSenha(string email, string senha)
     {
@@ -37,6 +49,15 @@ public class ClienteRepository : IClienteRepository
     }
     public void Deletar(int id)
     {
-        throw new NotImplementedException();
+        var cliente = _context.Clientes.Find(id);
+
+        if (cliente == null)
+        {
+            throw new Exception();
+        }
+
+        _context.Clientes.Remove(cliente);
+
+        _context.SaveChanges();
     }
 }
