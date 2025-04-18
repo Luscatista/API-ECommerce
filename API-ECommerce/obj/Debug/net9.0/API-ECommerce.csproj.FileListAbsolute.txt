@@ -161,9 +161,9 @@ C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\runtimes\
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECommerce.csproj.AssemblyReference.cache
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECom.5F7F2A60.Up2Date
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECommerce.sourcelink.json
-C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\API-ECommerce.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fic\source\repos\API-ECommerce\API-ECommerce\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

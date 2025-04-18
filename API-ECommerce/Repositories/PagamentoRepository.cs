@@ -44,7 +44,7 @@ public class PagamentoRepository : IPagamentoRepository
     {
         var pagamento = _context.Pagamentos.Find(id);
 
-        if (pagamento != null)
+        if (pagamento == null)
         {
             throw new Exception();
         }

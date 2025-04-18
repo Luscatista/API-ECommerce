@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 //AddSingletont - o C# cria uma intância nova para sua aplicação inteira
 
-builder.Services.AddScoped<EcommerceContext, EcommerceContext>();
+builder.Services.AddDbContext<EcommerceContext>();
 
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();

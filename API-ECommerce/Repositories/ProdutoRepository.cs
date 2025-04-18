@@ -34,7 +34,7 @@ public class ProdutoRepository : IProdutoRepository
         produtoAtual.NomeProduto = produto.NomeProduto;
         produtoAtual.Descricao = produto.Descricao;
         produtoAtual.Preco = produto.Preco;
-        produtoAtual.Categoria = produto.Categoria;
+        produtoAtual.CategoriaProduto = produto.CategoriaProduto;
         produtoAtual.Imagem = produto.Imagem;
         produtoAtual.EstoqueDisponivel = produto.EstoqueDisponivel;
 
