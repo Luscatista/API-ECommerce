@@ -33,6 +33,17 @@ public class ClienteController : Controller
         return Ok(cliente);
     }
 
+    //[HttpGet("{id}")]
+    //public IActionResult BuscarPorEmailSenha(string email, string senha)
+    //{
+    //    var cliente = _clienteRepository.BuscarPorEmailSenha(email, senha);
+    //    if (cliente == null)
+    //    {
+    //        return NotFound("Dados inválidos.");
+    //    }
+    //    return Ok(cliente);
+    //}
+
     [HttpPost]
     public IActionResult CadastrarCliente(Cliente cliente)
     {
@@ -49,7 +60,7 @@ public class ClienteController : Controller
             _clienteRepository.Atualizar(id, cliente);
             return Ok(cliente);
         }
-        catch(Exception ex)
+        catch(Exception)
         {
             return NotFound("Cliente não encontrado.");
         }
@@ -63,7 +74,7 @@ public class ClienteController : Controller
             _clienteRepository.Deletar(id);
             return NoContent();
         }
-        catch(Exception ex)
+        catch(Exception)
         {
             return NotFound("Cliente não encontrado.");
         }
