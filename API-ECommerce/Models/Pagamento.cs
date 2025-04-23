@@ -15,5 +15,6 @@ public partial class Pagamento
 
     public int IdPedido { get; set; }
 
+    //Por padrão o entityframework nos traz <Nome da tabela>Id, no caso criamos Id<Nome da tabela> (que é fora do padrão de nomenclatura)lá no banco de dados.
     public virtual Pedido? IdPedidoNavigation { get; set; } = null!;
 }

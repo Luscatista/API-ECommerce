@@ -33,16 +33,16 @@ public class ClienteController : Controller
         return Ok(cliente);
     }
 
-    //[HttpGet("{id}")]
-    //public IActionResult BuscarPorEmailSenha(string email, string senha)
-    //{
-    //    var cliente = _clienteRepository.BuscarPorEmailSenha(email, senha);
-    //    if (cliente == null)
-    //    {
-    //        return NotFound("Dados inválidos.");
-    //    }
-    //    return Ok(cliente);
-    //}
+    [HttpGet("{email}/{senha}")]
+    public IActionResult Login(string email, string senha)
+    {
+        var cliente = _clienteRepository.BuscarPorEmailSenha(email, senha);
+        if (cliente == null)
+        {
+            return NotFound("Dados inválidos.");
+        }
+        return Ok(cliente);
+    }
 
     [HttpPost]
     public IActionResult CadastrarCliente(Cliente cliente)
