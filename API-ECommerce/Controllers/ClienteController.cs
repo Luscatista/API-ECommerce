@@ -32,6 +32,17 @@ public class ClienteController : Controller
         }
         return Ok(cliente);
     }
+    
+    [HttpGet("/buscar/{nome}")]
+    public IActionResult BuscarClientePorNome(string nome)
+    {
+        var clientes = _clienteRepository.BuscarClientePorNome(nome);
+        if (clientes == null)
+        {
+            return NotFound();
+        }
+        return Ok(clientes);
+    }
 
     [HttpGet("{email}/{senha}")]
     public IActionResult Login(string email, string senha)

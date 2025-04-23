@@ -15,7 +15,7 @@ public class ClienteRepository : IClienteRepository
     public List<Cliente> ListarTodos()
     {
         //ToList() - Pegar varios
-        return _context.Clientes.ToList();
+        return _context.Clientes.OrderBy(c => c.NomeCompleto).ToList();
     }
     public Cliente? BuscarPorId(int id)
     {
@@ -25,6 +25,11 @@ public class ClienteRepository : IClienteRepository
     public Cliente? BuscarPorEmailSenha(string email, string senha)
     {
         return _context.Clientes.FirstOrDefault(c => c.Email == email && c.Senha == senha);
+    }
+    public List<Cliente> BuscarClientePorNome(string nome)
+    {
+        var listaClientes = _context.Clientes.Where(c => c.NomeCompleto == nome).ToList();
+        return listaClientes;
     }
     public void Cadastrar(Cliente cliente)
     {
