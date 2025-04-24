@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "cliente",
-        "Type": "API_ECommerce.Models.Cliente",
+        "Type": "API_ECommerce.DTOs.ClienteDto",
         "IsRequired": true
       }
     ],
@@ -145,7 +145,7 @@
     "Parameters": [
       {
         "Name": "pagamento",
-        "Type": "API_ECommerce.Models.Pagamento",
+        "Type": "API_ECommerce.DTOs.PagamentoDto",
         "IsRequired": true
       }
     ],
@@ -250,7 +250,7 @@
     "Parameters": [
       {
         "Name": "produto",
-        "Type": "API_ECommerce.DTO.CadastrarProdutoDto",
+        "Type": "API_ECommerce.DTOs.ProdutoDto",
         "IsRequired": true
       }
     ],

@@ -1,5 +1,5 @@
 ﻿using API_ECommerce.Context;
-using API_ECommerce.DTO;
+using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Repositories;
@@ -38,7 +38,7 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CadastrarProduto(CadastrarProdutoDto produto)
+    public IActionResult CadastrarProduto(ProdutoDto produto)
     {
         _produtoRepository.Cadastrar(produto);
 
@@ -67,7 +67,7 @@ public class ProdutoController : ControllerBase
             _produtoRepository.Deletar(id);
             return NoContent();
         }
-        catch(Exception ex)
+        catch(Exception)
         {
             return NotFound("Produto não encontrado.");
         }

@@ -1,6 +1,6 @@
-﻿namespace API_ECommerce.DTO;
+﻿namespace API_ECommerce.DTOs;
 
-public class CadastrarPagamentoDto
+public class PagamentoDto
 {
     public string StatusPagamento { get; set; } = null!;
 

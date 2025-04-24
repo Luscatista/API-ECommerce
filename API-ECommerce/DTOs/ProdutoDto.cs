@@ -1,6 +1,6 @@
-﻿namespace API_ECommerce.DTO;
+﻿namespace API_ECommerce.DTOs;
 
-public class CadastrarProdutoDto
+public class ProdutoDto
 {
     public string NomeProduto { get; set; } = null!;
 

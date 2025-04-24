@@ -1,5 +1,5 @@
 ﻿using API_ECommerce.Context;
-using API_ECommerce.DTO;
+using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Repositories;
@@ -35,7 +35,7 @@ public class PagamentoController : Controller
     }
 
     [HttpPost]
-    public IActionResult CadastrarPagamento(CadastrarPagamentoDto pagamento)
+    public IActionResult CadastrarPagamento(PagamentoDto pagamento)
     {
         _pagamentoRepository.Cadastrar(pagamento);
         return Created();
@@ -63,7 +63,7 @@ public class PagamentoController : Controller
             _pagamentoRepository.Deletar(id);
             return NoContent();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return NotFound("Pagamento não encontrado.");
         }

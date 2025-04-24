@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using API_ECommerce.Context;
-using API_ECommerce.DTO;
+using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
+using API_ECommerce.ViewModels;
 
 namespace API_ECommerce.Repositories;
 
@@ -13,10 +14,18 @@ public class ClienteRepository : IClienteRepository
     {
         _context = context;
     }
-    public List<Cliente> ListarTodos()
+    public List<ListarClienteViewModel> ListarTodos()
     {
-        //ToList() - Pegar varios
-        return _context.Clientes.OrderBy(c => c.NomeCompleto).ToList();
+        return _context.Clientes.Select(
+            c => new ListarClienteViewModel 
+            {
+                IdCliente = c.IdCliente,
+                NomeCompleto = c.NomeCompleto,
+                Email = c.Email,
+                Telefone = c.Telefone,
+                Endereco = c.Endereco
+            })
+            .OrderBy(c => c.NomeCompleto).ToList();
     }
     public Cliente? BuscarPorId(int id)
     {
@@ -32,7 +41,7 @@ public class ClienteRepository : IClienteRepository
         var listaClientes = _context.Clientes.Where(c => c.NomeCompleto == nome).ToList();
         return listaClientes;
     }
-    public void Cadastrar(CadastrarClienteDto cliente)
+    public void Cadastrar(ClienteDto cliente)
     {
         Cliente cadastrarCliente = new Cliente
         {

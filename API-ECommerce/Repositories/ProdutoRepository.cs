@@ -1,7 +1,7 @@
 ﻿using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Context;
-using API_ECommerce.DTO;
+using API_ECommerce.DTOs;
 
 namespace API_ECommerce.Repositories;
 public class ProdutoRepository : IProdutoRepository
@@ -19,7 +19,7 @@ public class ProdutoRepository : IProdutoRepository
     {
         return _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
     }
-    public void Cadastrar(CadastrarProdutoDto produto)
+    public void Cadastrar(ProdutoDto produto)
     {
         Produto produtoCadastro = new Produto
         {
