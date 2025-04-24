@@ -1,4 +1,5 @@
 ﻿using API_ECommerce.Context;
+using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Repositories;
@@ -56,7 +57,7 @@ public class ClienteController : Controller
     }
 
     [HttpPost]
-    public IActionResult CadastrarCliente(Cliente cliente)
+    public IActionResult CadastrarCliente(CadastrarClienteDto cliente)
     {
         _clienteRepository.Cadastrar(cliente);
 

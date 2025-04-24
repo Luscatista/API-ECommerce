@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using API_ECommerce.Context;
+using API_ECommerce.DTO;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 
@@ -31,9 +32,18 @@ public class ClienteRepository : IClienteRepository
         var listaClientes = _context.Clientes.Where(c => c.NomeCompleto == nome).ToList();
         return listaClientes;
     }
-    public void Cadastrar(Cliente cliente)
+    public void Cadastrar(CadastrarClienteDto cliente)
     {
-        _context.Clientes.Add(cliente);
+        Cliente cadastrarCliente = new Cliente
+        {
+            NomeCompleto = cliente.NomeCompleto,
+            Email = cliente.Email,
+            Senha = cliente.Senha,
+            Telefone = cliente.Telefone,
+            Endereco = cliente.Endereco,
+            DataCadastro = cliente.DataCadastro
+        };
+        _context.Clientes.Add(cadastrarCliente);
         _context.SaveChanges();
     }
     public void Atualizar(int id, Cliente cliente)

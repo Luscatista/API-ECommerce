@@ -250,7 +250,7 @@
     "Parameters": [
       {
         "Name": "produto",
-        "Type": "API_ECommerce.Models.Produto",
+        "Type": "API_ECommerce.DTO.CadastrarProdutoDto",
         "IsRequired": true
       }
     ],
