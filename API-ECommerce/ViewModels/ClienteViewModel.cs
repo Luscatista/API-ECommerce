@@ -2,7 +2,7 @@
 
 namespace API_ECommerce.ViewModels;
 
-public class ListarClienteViewModel
+public class ClienteViewModel
 {
     public int IdCliente { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace API_ECommerce.Models;
 
@@ -19,5 +20,6 @@ public partial class Produto
 
     public string? Imagem { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<ItemPedido> ItemPedidos { get; set; } = new List<ItemPedido>();
 }

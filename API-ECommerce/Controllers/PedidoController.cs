@@ -24,11 +24,45 @@ public class PedidoController : Controller
         return Ok(_pedidoRepository.ListarTodos());
     }
 
+    [HttpGet("{id}")]
+    public ActionResult BuscarPorId(int id)
+    { 
+        return Ok(_pedidoRepository.BuscarPorId(id));
+    }
+
     [HttpPost]
     public IActionResult CadastrarProduto(PedidoDto pedido)
     {
         _pedidoRepository.Cadastrar(pedido);
 
         return Created();
+    }
+
+    [HttpPut]
+    public IActionResult Editar(int id, PedidoDto pedidoDto)
+    {
+        try
+        {
+            _pedidoRepository.Atualizar(id, pedidoDto);
+            return Ok(pedidoDto);
+        }
+        catch (Exception)
+        {
+            return NotFound("Pedido não encontrado.");
+        }
+    }
+
+    [HttpDelete]
+    public IActionResult Deletar(int id)
+    {
+        try
+        {
+            _pedidoRepository.Deletar(id);
+            return NoContent();
+        }
+        catch (Exception)
+        {
+            return NotFound("Pedido não encontrado.");
+        }
     }
 }

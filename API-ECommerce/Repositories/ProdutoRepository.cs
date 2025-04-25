@@ -2,6 +2,7 @@
 using API_ECommerce.Models;
 using API_ECommerce.Context;
 using API_ECommerce.DTOs;
+using API_ECommerce.ViewModels;
 
 namespace API_ECommerce.Repositories;
 public class ProdutoRepository : IProdutoRepository
@@ -11,30 +12,50 @@ public class ProdutoRepository : IProdutoRepository
     {
         _context = context;
     }
-    public List<Produto> ListarTodos()
+    public List<ProdutoViewModel> ListarTodos()
     {
-        return _context.Produtos.ToList();
+        return _context.Produtos.Select(
+            p => new ProdutoViewModel
+            {
+                IdProduto = p.IdProduto,
+                NomeProduto = p.NomeProduto,
+                Descricao = p.Descricao,
+                Preco = p.Preco,
+                EstoqueDisponivel = p.EstoqueDisponivel,
+                CategoriaProduto = p.CategoriaProduto,
+                Imagem = p.Imagem
+            }).ToList();
     }
-    public Produto BuscarPorId(int id)
+    public ProdutoViewModel? BuscarPorId(int id)
     {
-        return _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
+        return _context.Produtos.Select(
+            p => new ProdutoViewModel
+            {
+                IdProduto = p.IdProduto,
+                NomeProduto = p.NomeProduto,
+                Descricao = p.Descricao,
+                Preco = p.Preco,
+                EstoqueDisponivel = p.EstoqueDisponivel,
+                CategoriaProduto = p.CategoriaProduto,
+                Imagem = p.Imagem
+            }).FirstOrDefault(p => p.IdProduto == id);
     }
-    public void Cadastrar(ProdutoDto produto)
+    public void Cadastrar(ProdutoDto produtoDto)
     {
-        Produto produtoCadastro = new Produto
+        var produto = new Produto
         {
-            NomeProduto = produto.NomeProduto,
-            Descricao = produto.Descricao,
-            Preco = produto.Preco,
-            EstoqueDisponivel = produto.EstoqueDisponivel,
-            CategoriaProduto = produto.CategoriaProduto,
-            Imagem = produto.Imagem
+            NomeProduto = produtoDto.NomeProduto,
+            Descricao = produtoDto.Descricao,
+            Preco = produtoDto.Preco,
+            EstoqueDisponivel = produtoDto.EstoqueDisponivel,
+            CategoriaProduto = produtoDto.CategoriaProduto,
+            Imagem = produtoDto.Imagem
         };
 
-        _context.Produtos.Add(produtoCadastro);
+        _context.Produtos.Add(produto);
         _context.SaveChanges();
     }
-    public void Atualizar(int id, Produto produto)
+    public void Atualizar(int id, ProdutoDto produtoDto)
     {
         var produtoAtual =  _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
         if (produtoAtual == null)
@@ -42,12 +63,12 @@ public class ProdutoRepository : IProdutoRepository
             throw new Exception();
         }
 
-        produtoAtual.NomeProduto = produto.NomeProduto;
-        produtoAtual.Descricao = produto.Descricao;
-        produtoAtual.Preco = produto.Preco;
-        produtoAtual.CategoriaProduto = produto.CategoriaProduto;
-        produtoAtual.Imagem = produto.Imagem;
-        produtoAtual.EstoqueDisponivel = produto.EstoqueDisponivel;
+        produtoAtual.NomeProduto = produtoDto.NomeProduto;
+        produtoAtual.Descricao = produtoDto.Descricao;
+        produtoAtual.Preco = produtoDto.Preco;
+        produtoAtual.CategoriaProduto = produtoDto.CategoriaProduto;
+        produtoAtual.Imagem = produtoDto.Imagem;
+        produtoAtual.EstoqueDisponivel = produtoDto.EstoqueDisponivel;
 
         _context.SaveChanges();
     }

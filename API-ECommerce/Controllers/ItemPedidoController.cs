@@ -1,4 +1,5 @@
 ﻿using API_ECommerce.Context;
+using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Repositories;
@@ -23,11 +24,45 @@ public class ItemPedidoController : Controller
         return Ok(_itemPedidoRepository.ListarTodos());
     }
 
+    [HttpGet("{id}")]
+    public ActionResult BuscarPorId(int id)
+    {
+        return Ok(_itemPedidoRepository.BuscarPorId(id));
+    }
+
     [HttpPost]
     public IActionResult CadastrarProduto(ItemPedido itemPedido)
     {
         _itemPedidoRepository.Cadastrar(itemPedido);
 
         return Created();
+    }
+
+    [HttpPut]
+    public IActionResult Editar(int id, ItemPedido itemPedido)
+    {
+        try
+        {
+            _itemPedidoRepository.Atualizar(id, itemPedido);
+            return Ok(itemPedido);
+        }
+        catch (Exception)
+        {
+            return NotFound("ItemPedido não encontrado.");
+        }
+    }
+
+    [HttpDelete]
+    public IActionResult Deletar(int id)
+    {
+        try
+        {
+            _itemPedidoRepository.Deletar(id);
+            return NoContent();
+        }
+        catch (Exception)
+        {
+            return NotFound("ItemPedido não encontrado.");
+        }
     }
 }

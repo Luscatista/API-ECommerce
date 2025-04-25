@@ -65,12 +65,12 @@ public class ClienteController : Controller
     }
 
     [HttpPut("{id}")]
-    public IActionResult Editar(int id, Cliente cliente)
+    public IActionResult Editar(int id, ClienteDto clienteDto)
     {
         try
         {
-            _clienteRepository.Atualizar(id, cliente);
-            return Ok(cliente);
+            _clienteRepository.Atualizar(id, clienteDto);
+            return Ok(clienteDto);
         }
         catch(Exception)
         {

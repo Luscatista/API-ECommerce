@@ -35,21 +35,21 @@ public class PagamentoController : Controller
     }
 
     [HttpPost]
-    public IActionResult CadastrarPagamento(PagamentoDto pagamento)
+    public IActionResult CadastrarPagamento(PagamentoDto pagamentoDto)
     {
-        _pagamentoRepository.Cadastrar(pagamento);
+        _pagamentoRepository.Cadastrar(pagamentoDto);
         return Created();
     }
 
     [HttpPut("{id}")]
-    public IActionResult Editar(int id, Pagamento pagamento)
+    public IActionResult Editar(int id, PagamentoDto pagamentoDto)
     {
         try
         {
-            _pagamentoRepository.Atualizar(id, pagamento);
-            return Ok(pagamento);
+            _pagamentoRepository.Atualizar(id, pagamentoDto);
+            return Ok(pagamentoDto);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return NotFound();
         }

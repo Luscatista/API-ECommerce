@@ -87,17 +87,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/ClienteDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/ClienteDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Cliente"
+                "$ref": "#/components/schemas/ClienteDto"
               }
             }
           }
@@ -305,17 +305,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Pagamento"
+                "$ref": "#/components/schemas/PagamentoDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Pagamento"
+                "$ref": "#/components/schemas/PagamentoDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Pagamento"
+                "$ref": "#/components/schemas/PagamentoDto"
               }
             }
           }
@@ -382,6 +382,88 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pedido"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pedido"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Pedido/{id}": {
+      "get": {
+        "tags": [
+          "Pedido"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -471,17 +553,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/ProdutoDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/ProdutoDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Produto"
+                "$ref": "#/components/schemas/ProdutoDto"
               }
             }
           }
@@ -517,48 +599,6 @@
   },
   "components": {
     "schemas": {
-      "Cliente": {
-        "type": "object",
-        "properties": {
-          "idCliente": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nomeCompleto": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "telefone": {
-            "type": "string",
-            "nullable": true
-          },
-          "endereco": {
-            "type": "string",
-            "nullable": true
-          },
-          "senha": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataCadastro": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "pedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Pedido"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ClienteDto": {
         "type": "object",
         "properties": {
@@ -609,40 +649,8 @@
             "type": "integer",
             "format": "int32"
           },
-          "idPedidoNavigation": {
-            "$ref": "#/components/schemas/Pedido"
-          },
           "idProdutoNavigation": {
             "$ref": "#/components/schemas/Produto"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Pagamento": {
-        "type": "object",
-        "properties": {
-          "idPagamento": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "statusPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "formaPagamento": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataPagamento": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "idPedido": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idPedidoNavigation": {
-            "$ref": "#/components/schemas/Pedido"
           }
         },
         "additionalProperties": false
@@ -665,43 +673,6 @@
           "idPedido": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Pedido": {
-        "type": "object",
-        "properties": {
-          "idPedido": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dataPedido": {
-            "type": "string",
-            "format": "date"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "valorTotal": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "idCliente": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idClienteNavigation": {
-            "$ref": "#/components/schemas/Cliente"
-          },
-          "itemPedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ItemPedido"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -766,13 +737,6 @@
           },
           "imagem": {
             "type": "string",
-            "nullable": true
-          },
-          "itemPedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ItemPedido"
-            },
             "nullable": true
           }
         },

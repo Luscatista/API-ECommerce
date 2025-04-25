@@ -16,20 +16,42 @@ public class ItemPedidoRepository : IItemPedidoRepository
         return _context.ItemPedidos.ToList();
     }
 
-    public ItemPedido BuscarPorId(int id)
+    public ItemPedido? BuscarPorId(int id)
     {
-        throw new NotImplementedException();
+        return _context.ItemPedidos.FirstOrDefault(i => i.IdPedido == id);
     }
     public void Cadastrar(ItemPedido itemPedido)
     {
-        throw new NotImplementedException();
+        _context.ItemPedidos.Add(itemPedido);
+        _context.SaveChanges();
     }
     public void Atualizar(int id, ItemPedido itemPedido)
     {
-        throw new NotImplementedException();
+        var itemPedidoAtual = _context.ItemPedidos.FirstOrDefault(i => i.IdItemPedido == id);
+        if(itemPedidoAtual == null)
+        {
+            throw new Exception("ItemPedido não encontrado.");    
+        }
+
+        itemPedidoAtual.IdPedido = itemPedido.IdPedido;
+        itemPedidoAtual.IdProduto = itemPedido.IdProduto;
+        itemPedidoAtual.Quantidade = itemPedido.Quantidade;
+
+        _context.Add(itemPedidoAtual);
+        _context.SaveChanges();
+
     }
     public void Deletar(int id)
     {
-        throw new NotImplementedException();
+        var itemPedido = _context.ItemPedidos.Find(id);
+
+        if (itemPedido == null)
+        {
+            throw new Exception();
+        }
+
+        _context.ItemPedidos.Remove(itemPedido);
+
+        _context.SaveChanges();
     }
 }

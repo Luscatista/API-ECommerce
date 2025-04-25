@@ -14,10 +14,10 @@ public class ClienteRepository : IClienteRepository
     {
         _context = context;
     }
-    public List<ListarClienteViewModel> ListarTodos()
+    public List<ClienteViewModel> ListarTodos()
     {
         return _context.Clientes.Select(
-            c => new ListarClienteViewModel 
+            c => new ClienteViewModel 
             {
                 IdCliente = c.IdCliente,
                 NomeCompleto = c.NomeCompleto,
@@ -27,48 +27,79 @@ public class ClienteRepository : IClienteRepository
             })
             .OrderBy(c => c.NomeCompleto).ToList();
     }
-    public Cliente? BuscarPorId(int id)
+    public ClienteViewModel? BuscarPorId(int id)
     {
         //FirstOrDefault() - Entrega o primeiro ou null
-        return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
+        return _context.Clientes.Select(
+            c => new ClienteViewModel
+            {
+                IdCliente = c.IdCliente,
+                NomeCompleto = c.NomeCompleto,
+                Email = c.Email,
+                Telefone = c.Telefone,
+                Endereco = c.Endereco
+            }).FirstOrDefault(c => c.IdCliente == id);
     }
-    public Cliente? BuscarPorEmailSenha(string email, string senha)
+    public ClienteViewModel? BuscarPorEmailSenha(string email, string senha)
     {
-        return _context.Clientes.FirstOrDefault(c => c.Email == email && c.Senha == senha);
-    }
-    public List<Cliente> BuscarClientePorNome(string nome)
-    {
-        var listaClientes = _context.Clientes.Where(c => c.NomeCompleto == nome).ToList();
-        return listaClientes;
-    }
-    public void Cadastrar(ClienteDto cliente)
-    {
-        Cliente cadastrarCliente = new Cliente
+        var cliente = _context.Clientes.FirstOrDefault(c => c.Email == email && c.Senha == senha);
+        if (cliente == null)
+        {
+            throw new Exception("Cliente não encontrado.");
+        }
+
+        var clienteDto = new ClienteViewModel
         {
             NomeCompleto = cliente.NomeCompleto,
             Email = cliente.Email,
-            Senha = cliente.Senha,
-            Telefone = cliente.Telefone,
             Endereco = cliente.Endereco,
-            DataCadastro = cliente.DataCadastro
+            DataCadastro = cliente.DataCadastro,
+            Telefone = cliente.Telefone
+        };
+        return clienteDto;
+    }
+    public List<ClienteViewModel> BuscarClientePorNome(string nome)
+    {
+        var listaClientes = _context.Clientes.Select(
+            c => new ClienteViewModel
+            {
+                IdCliente = c.IdCliente,
+                NomeCompleto = c.NomeCompleto,
+                Email = c.Email,
+                Telefone = c.Telefone,
+                Endereco = c.Endereco
+            }).Where(c => c.NomeCompleto == nome).ToList();
+
+        return listaClientes;
+    }
+    public void Cadastrar(ClienteDto clienteDto)
+    {
+        Cliente cadastrarCliente = new Cliente
+        {
+            NomeCompleto = clienteDto.NomeCompleto,
+            Email = clienteDto.Email,
+            Senha = clienteDto.Senha,
+            Telefone = clienteDto.Telefone,
+            Endereco = clienteDto.Endereco,
+            DataCadastro = clienteDto.DataCadastro
         };
         _context.Clientes.Add(cadastrarCliente);
         _context.SaveChanges();
     }
-    public void Atualizar(int id, Cliente cliente)
+    public void Atualizar(int id, ClienteDto clienteDto)
     {
-        var clienteAtual = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
-        if (clienteAtual == null)
+        var cliente = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
+        if (cliente == null)
         {
             throw new ArgumentNullException("Cliente não encontrado.");
         }
 
-        clienteAtual.NomeCompleto = cliente.NomeCompleto;
-        clienteAtual.Email = cliente.Email;
-        clienteAtual.Senha = cliente.Senha;
-        clienteAtual.Telefone = cliente.Telefone;
-        clienteAtual.Endereco = cliente.Endereco;
-        clienteAtual.DataCadastro = cliente.DataCadastro;
+        cliente.NomeCompleto = clienteDto.NomeCompleto;
+        cliente.Email = clienteDto.Email;
+        cliente.Senha = clienteDto.Senha;
+        cliente.Telefone = clienteDto.Telefone;
+        cliente.Endereco = clienteDto.Endereco;
+        cliente.DataCadastro = clienteDto.DataCadastro;
 
         _context.SaveChanges();
     }

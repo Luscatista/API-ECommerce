@@ -76,8 +76,8 @@
         "IsRequired": true
       },
       {
-        "Name": "cliente",
-        "Type": "API_ECommerce.Models.Cliente",
+        "Name": "clienteDto",
+        "Type": "API_ECommerce.DTOs.ClienteDto",
         "IsRequired": true
       }
     ],
@@ -144,7 +144,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pagamento",
+        "Name": "pagamentoDto",
         "Type": "API_ECommerce.DTOs.PagamentoDto",
         "IsRequired": true
       }
@@ -181,8 +181,8 @@
         "IsRequired": true
       },
       {
-        "Name": "pagamento",
-        "Type": "API_ECommerce.Models.Pagamento",
+        "Name": "pagamentoDto",
+        "Type": "API_ECommerce.DTOs.PagamentoDto",
         "IsRequired": true
       }
     ],
@@ -231,6 +231,59 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API_ECommerce.Controllers.PedidoController",
+    "Method": "Editar",
+    "RelativePath": "api/Pedido",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pedidoDto",
+        "Type": "API_ECommerce.DTOs.PedidoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.PedidoController",
+    "Method": "Deletar",
+    "RelativePath": "api/Pedido",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.PedidoController",
+    "Method": "BuscarPorId",
+    "RelativePath": "api/Pedido/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API_ECommerce.Controllers.ProdutoController",
     "Method": "ListarProdutos",
     "RelativePath": "api/Produto",
@@ -249,7 +302,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "produto",
+        "Name": "produtoDto",
         "Type": "API_ECommerce.DTOs.ProdutoDto",
         "IsRequired": true
       }
@@ -286,8 +339,8 @@
         "IsRequired": true
       },
       {
-        "Name": "produto",
-        "Type": "API_ECommerce.Models.Produto",
+        "Name": "produtoDto",
+        "Type": "API_ECommerce.DTOs.ProdutoDto",
         "IsRequired": true
       }
     ],

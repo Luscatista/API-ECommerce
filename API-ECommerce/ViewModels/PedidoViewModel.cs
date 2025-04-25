@@ -1,11 +1,12 @@
 ﻿using API_ECommerce.Models;
 using System.Text.Json.Serialization;
 
-namespace API_ECommerce.DTOs;
+namespace API_ECommerce.ViewModels;
 
-//recebo os dados do pedido e recebo os dados dos produtos comprados
-public class PedidoDto
+public class PedidoViewModel
 {
+    public int IdPedido { get; set; }
+
     public DateOnly DataPedido { get; set; }
 
     public string Status { get; set; } = null!;
@@ -13,6 +14,4 @@ public class PedidoDto
     public decimal? ValorTotal { get; set; }
 
     public int IdCliente { get; set; }
-
-    public List<int> Produtos { get; set; }
 }

@@ -38,20 +38,20 @@ public class ProdutoController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CadastrarProduto(ProdutoDto produto)
+    public IActionResult CadastrarProduto(ProdutoDto produtoDto)
     {
-        _produtoRepository.Cadastrar(produto);
+        _produtoRepository.Cadastrar(produtoDto);
 
         return Created();
     }
 
     [HttpPut("{id}")]
-    public IActionResult Editar(int id, Produto produto)
+    public IActionResult Editar(int id, ProdutoDto produtoDto)
     {
         try
         {
-            _produtoRepository.Atualizar(id, produto);
-            return Ok(produto);
+            _produtoRepository.Atualizar(id, produtoDto);
+            return Ok(produtoDto);
         }
         catch(Exception ex) 
         {

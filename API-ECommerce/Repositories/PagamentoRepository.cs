@@ -2,6 +2,7 @@
 using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
+using API_ECommerce.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_ECommerce.Repositories;
@@ -13,39 +14,55 @@ public class PagamentoRepository : IPagamentoRepository
     {
         _context = context;
     }
-    public List<Pagamento> ListarTodos()
+    public List<PagamentoViewModel> ListarTodos()
     {
-        return _context.Pagamentos.Include(p => p.IdPedidoNavigation).ToList();
+        return _context.Pagamentos.Select(
+            p => new PagamentoViewModel
+            {
+                IdPagamento = p.IdPagamento,
+                IdPedido = p.IdPedido,
+                StatusPagamento = p.StatusPagamento,
+                FormaPagamento = p.FormaPagamento,
+                DataPagamento = p.DataPagamento
+            }).ToList();
     }
-    public Pagamento BuscarPorId(int id)
+    public PagamentoViewModel? BuscarPorId(int id)
     {
-        return _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
+        return _context.Pagamentos.Select(
+            p => new PagamentoViewModel
+            {
+                IdPagamento = p.IdPagamento,
+                IdPedido = p.IdPedido,
+                StatusPagamento = p.StatusPagamento,
+                FormaPagamento = p.FormaPagamento,
+                DataPagamento = p.DataPagamento
+            }).FirstOrDefault(p => p.IdPagamento == id);
     }
-    public void Cadastrar(PagamentoDto pagamento)
+    public void Cadastrar(PagamentoDto pagamentoDto)
     {
-        Pagamento cadastrarPagamento = new Pagamento
+        var Pagamento = new Pagamento
         {
-            StatusPagamento = pagamento.StatusPagamento,
-            FormaPagamento = pagamento.FormaPagamento,
-            DataPagamento = pagamento.DataPagamento,
-            IdPedido = pagamento.IdPedido
+            StatusPagamento = pagamentoDto.StatusPagamento,
+            FormaPagamento = pagamentoDto.FormaPagamento,
+            DataPagamento = pagamentoDto.DataPagamento,
+            IdPedido = pagamentoDto.IdPedido
         };
-        _context.Pagamentos.Add(cadastrarPagamento);
+        _context.Pagamentos.Add(Pagamento);
         _context.SaveChanges();
     }
-    public void Atualizar(int id, Pagamento pagamento)
+    public void Atualizar(int id, PagamentoDto pagamentoDto)
     {
-        var pagamentoAtual = _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
+        var pagamento = _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
 
-        if(pagamentoAtual == null)
+        if(pagamento == null)
         {
-            throw new Exception();
+            throw new Exception("Pagamento não encontrado.");
         }
 
-        pagamentoAtual.StatusPagamento = pagamento.StatusPagamento;
-        pagamentoAtual.FormaPagamento = pagamento.FormaPagamento;
-        pagamentoAtual.DataPagamento = pagamento.DataPagamento;
-        pagamentoAtual.IdPedido = pagamento.IdPedido;
+        pagamento.StatusPagamento = pagamentoDto.StatusPagamento;
+        pagamento.FormaPagamento = pagamentoDto.FormaPagamento;
+        pagamento.DataPagamento = pagamentoDto.DataPagamento;
+        pagamento.IdPedido = pagamentoDto.IdPedido;
         
         _context.SaveChanges();
     }

@@ -2,6 +2,7 @@
 using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_ECommerce.Repositories;
 
@@ -14,16 +15,17 @@ public class PedidoRepository : IPedidoRepository
     }
     public List<Pedido> ListarTodos()
     {
-        return _context.Pedidos.ToList();
+        return _context.Pedidos
+            .Include(p => p.ItemPedidos)
+            .ThenInclude(p => p.IdProdutoNavigation)
+            .ToList();
     }
-    public Pedido BuscarPorId(int id)
+    public Pedido? BuscarPorId(int id)
     {
-        throw new NotImplementedException();
+        return _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
     }
     public void Cadastrar(PedidoDto pedidoDto)
     {
-        // 1. Cadastrar o pedido crio a variavel para guardar os dados do pedido
-
         var pedido = new Pedido
         {
             DataPedido = pedidoDto.DataPedido,
@@ -35,8 +37,6 @@ public class PedidoRepository : IPedidoRepository
         _context.Pedidos.Add(pedido);
         _context.SaveChanges();
 
-        // 2. Cadastrar os ItensPedido
-        // Para cada PRODUTO, eu crio um ItemPedido
         for (int i = 0; i < pedidoDto.Produtos.Count; i++)
         {
             var produto = _context.Produtos.Find(pedidoDto.Produtos[i]);
@@ -51,12 +51,33 @@ public class PedidoRepository : IPedidoRepository
                 _context.SaveChanges();
         }
     }
-    public void Atualizar(int id, Pedido pedido)
+    public void Atualizar(int id, PedidoDto pedidoDto)
     {
-        throw new NotImplementedException();
+        var pedido = _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
+
+        if(pedido == null)
+        {
+            throw new Exception("Pedido não encontrado.");
+        }
+
+        pedido.Status = pedidoDto.Status;
+        pedido.IdCliente = pedidoDto.IdCliente;
+        pedido.ValorTotal = pedidoDto.ValorTotal;
+        pedido.DataPedido = pedidoDto.DataPedido;
+
+        _context.SaveChanges();
     }
     public void Deletar(int id)
     {
-        throw new NotImplementedException();
+        var pedido = _context.Produtos.Find(id);
+
+        if (pedido == null)
+        {
+            throw new Exception("Pedido não encontrado.");
+        }
+
+        _context.Produtos.Remove(pedido);
+
+        _context.SaveChanges();
     }
 }
