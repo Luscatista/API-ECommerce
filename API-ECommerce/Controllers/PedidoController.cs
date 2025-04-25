@@ -1,4 +1,5 @@
 ﻿using API_ECommerce.Context;
+using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Repositories;
@@ -24,7 +25,7 @@ public class PedidoController : Controller
     }
 
     [HttpPost]
-    public IActionResult CadastrarProduto(Pedido pedido)
+    public IActionResult CadastrarProduto(PedidoDto pedido)
     {
         _pedidoRepository.Cadastrar(pedido);
 

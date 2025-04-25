@@ -224,7 +224,7 @@
     "Parameters": [
       {
         "Name": "pedido",
-        "Type": "API_ECommerce.Models.Pedido",
+        "Type": "API_ECommerce.DTOs.PedidoDto",
         "IsRequired": true
       }
     ],

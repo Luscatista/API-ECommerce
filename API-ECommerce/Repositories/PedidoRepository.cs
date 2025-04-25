@@ -1,4 +1,5 @@
 ﻿using API_ECommerce.Context;
+using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 
@@ -19,9 +20,36 @@ public class PedidoRepository : IPedidoRepository
     {
         throw new NotImplementedException();
     }
-    public void Cadastrar(Pedido pedido)
+    public void Cadastrar(PedidoDto pedidoDto)
     {
-        throw new NotImplementedException();
+        // 1. Cadastrar o pedido crio a variavel para guardar os dados do pedido
+
+        var pedido = new Pedido
+        {
+            DataPedido = pedidoDto.DataPedido,
+            Status = pedidoDto.Status,
+            ValorTotal = pedidoDto.ValorTotal,
+            IdCliente = pedidoDto.IdCliente
+        };
+
+        _context.Pedidos.Add(pedido);
+        _context.SaveChanges();
+
+        // 2. Cadastrar os ItensPedido
+        // Para cada PRODUTO, eu crio um ItemPedido
+        for (int i = 0; i < pedidoDto.Produtos.Count; i++)
+        {
+            var produto = _context.Produtos.Find(pedidoDto.Produtos[i]);
+
+            var itemPedido = new ItemPedido
+            {
+                IdPedido = pedido.IdPedido,
+                IdProduto = produto.IdProduto,
+                Quantidade = 0
+            };
+                _context.ItemPedidos.Add(itemPedido);
+                _context.SaveChanges();
+        }
     }
     public void Atualizar(int id, Pedido pedido)
     {
