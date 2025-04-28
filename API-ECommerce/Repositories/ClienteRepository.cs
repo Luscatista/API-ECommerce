@@ -3,6 +3,7 @@ using API_ECommerce.Context;
 using API_ECommerce.DTOs;
 using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
+using API_ECommerce.Services;
 using API_ECommerce.ViewModels;
 
 namespace API_ECommerce.Repositories;
@@ -74,6 +75,7 @@ public class ClienteRepository : IClienteRepository
     }
     public void Cadastrar(ClienteDto clienteDto)
     {
+
         Cliente cadastrarCliente = new Cliente
         {
             NomeCompleto = clienteDto.NomeCompleto,
@@ -83,7 +85,13 @@ public class ClienteRepository : IClienteRepository
             Endereco = clienteDto.Endereco,
             DataCadastro = clienteDto.DataCadastro
         };
+
+        var passwordService = new PasswordService();
+
+        cadastrarCliente.Senha = passwordService.HashPassword(cadastrarCliente);
+
         _context.Clientes.Add(cadastrarCliente);
+
         _context.SaveChanges();
     }
     public void Atualizar(int id, ClienteDto clienteDto)
