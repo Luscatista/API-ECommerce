@@ -41,23 +41,24 @@ public class ClienteRepository : IClienteRepository
                 Endereco = c.Endereco
             }).FirstOrDefault(c => c.IdCliente == id);
     }
-    public ClienteViewModel? BuscarPorEmailSenha(string email, string senha)
+    public Cliente BuscarPorEmailSenha(string email, string senha)
     {
-        var cliente = _context.Clientes.FirstOrDefault(c => c.Email == email && c.Senha == senha);
+        var cliente = _context.Clientes.FirstOrDefault(c => c.Email == email);
+
         if (cliente == null)
+            return null;
+        
+        var passwordService = new PasswordService();
+
+        var resultado = passwordService.VerificarSenha(cliente, senha);
+
+        if(resultado == true)
         {
-            throw new Exception("Cliente não encontrado.");
+        return cliente;
         }
 
-        var clienteDto = new ClienteViewModel
-        {
-            NomeCompleto = cliente.NomeCompleto,
-            Email = cliente.Email,
-            Endereco = cliente.Endereco,
-            DataCadastro = cliente.DataCadastro,
-            Telefone = cliente.Telefone
-        };
-        return clienteDto;
+        return null;
+
     }
     public List<ClienteViewModel> BuscarClientePorNome(string nome)
     {

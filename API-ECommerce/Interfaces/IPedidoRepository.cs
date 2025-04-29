@@ -8,7 +8,7 @@ public interface IPedidoRepository
 {
     List<Pedido> ListarTodos();
     Pedido BuscarPorId(int id);
-    void Cadastrar(Pedido pedido);
-    void Atualizar(int id, Pedido pedido);
+    void Cadastrar(PedidoDto PedidoDto);
+    void Atualizar(int id, PedidoDto PedidoDto);
     void Deletar(int id);
 }

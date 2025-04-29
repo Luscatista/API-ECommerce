@@ -30,7 +30,7 @@ public class ClienteController : Controller
         var cliente = _clienteRepository.BuscarPorId(id);
         if (cliente == null)
         {
-            return NotFound();
+            return NotFound("Cliente não encontrado.");
         }
         return Ok(cliente);
     }
@@ -46,15 +46,21 @@ public class ClienteController : Controller
         return Ok(clientes);
     }
 
-    [HttpGet("{email}/{senha}")]
-    public IActionResult Login(string email, string senha)
+    [HttpPost("login")]
+    public IActionResult Login(LoginDto loginDto)
     {
-        var cliente = _clienteRepository.BuscarPorEmailSenha(email, senha);
+
+        var cliente = _clienteRepository.BuscarPorEmailSenha(loginDto.Email, loginDto.Senha);
         if (cliente == null)
         {
-            return NotFound("Dados inválidos.");
+            return Unauthorized("Dados inválidos.");
         }
-        return Ok(cliente);
+
+        var tokenService = new TokenService();
+
+        var token = tokenService.GenerateToken(cliente.Email);
+
+        return Ok(token);
     }
 
     [HttpPost]

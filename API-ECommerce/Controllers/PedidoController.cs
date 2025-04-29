@@ -26,25 +26,30 @@ public class PedidoController : Controller
 
     [HttpGet("{id}")]
     public ActionResult BuscarPorId(int id)
-    { 
-        return Ok(_pedidoRepository.BuscarPorId(id));
+    {
+        var pedido = _pedidoRepository.BuscarPorId(id);
+        if (pedido == null)
+        {
+            return NotFound("Pedido não encontrado.");
+        }
+        return Ok(pedido);
     }
 
     [HttpPost]
-    public IActionResult CadastrarProduto(Pedido pedido)
+    public IActionResult CadastrarProduto(PedidoDto pedidoDto)
     {
-        _pedidoRepository.Cadastrar(pedido);
+        _pedidoRepository.Cadastrar(pedidoDto);
 
         return Created();
     }
 
     [HttpPut]
-    public IActionResult Editar(int id, Pedido pedido)
+    public IActionResult Editar(int id, PedidoDto pedidoDto)
     {
         try
         {
-            _pedidoRepository.Atualizar(id, pedido);
-            return Ok(pedido);
+            _pedidoRepository.Atualizar(id, pedidoDto);
+            return Ok(pedidoDto);
         }
         catch (Exception)
         {
@@ -62,7 +67,7 @@ public class PedidoController : Controller
         }
         catch (Exception)
         {
-            return NotFound("Pedido não encontrado.");
+            return NotFound("Pedido foi não encontrado.");
         }
     }
 }

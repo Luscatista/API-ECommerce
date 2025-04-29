@@ -22,24 +22,26 @@ public class PedidoRepository : IPedidoRepository
     }
     public Pedido? BuscarPorId(int id)
     {
-        return _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
+        var pedido = _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
+        
+        return pedido;
     }
-    public void Cadastrar(Pedido pedido)
+    public void Cadastrar(PedidoDto pedidoDto)
     {
         var pedidoNovo = new Pedido
         {
-            DataPedido = pedido.DataPedido,
-            Status = pedido.Status,
-            ValorTotal = pedido.ValorTotal,
-            IdCliente = pedido.IdCliente
+            DataPedido = pedidoDto.DataPedido,
+            Status = pedidoDto.Status,
+            ValorTotal = pedidoDto.ValorTotal,
+            IdCliente = pedidoDto.IdCliente
         };
 
         _context.Pedidos.Add(pedidoNovo);
         _context.SaveChanges();
 
-        for (int i = 0; i < pedidoNovo.Pedidos.Count; i++)
+        for (int i = 0; i < pedidoDto.Produtos.Count; i++)
         {
-            var produto = _context.Produtos.Find(pedidoNovo.Produtos[i]);
+            var produto = _context.Produtos.Find(pedidoDto.Produtos[i]);
 
             var itemPedido = new ItemPedido
             {
@@ -51,29 +53,29 @@ public class PedidoRepository : IPedidoRepository
                 _context.SaveChanges();
         }
     }
-    public void Atualizar(int id, Pedido pedido)
+    public void Atualizar(int id, PedidoDto pedidoDto)
     {
-        var pedidoAtual = _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
+        var pedido = _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
 
         if(pedido == null)
         {
             throw new Exception("Pedido não encontrado.");
         }
 
-        pedido.Status = pedido.Status;
-        pedido.IdCliente = pedido.IdCliente;
-        pedido.ValorTotal = pedido.ValorTotal;
-        pedido.DataPedido = pedido.DataPedido;
+        pedido.Status = pedidoDto.Status;
+        pedido.IdCliente = pedidoDto.IdCliente;
+        pedido.ValorTotal = pedidoDto.ValorTotal;
+        pedido.DataPedido = pedidoDto.DataPedido;
 
         _context.SaveChanges();
     }
     public void Deletar(int id)
     {
-        var pedido = _context.Pedidos.FirstOrDefault(p => p.IdPedido == id);
+        var pedido = _context.Pedidos.Find(id);
 
         if (pedido == null)
         {
-            throw new Exception("Pedido não encontrado.");
+            throw new Exception("Não encontrado.");
         }
 
         _context.Pedidos.Remove(pedido);

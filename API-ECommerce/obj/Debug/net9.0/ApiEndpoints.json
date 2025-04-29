@@ -27,27 +27,6 @@
   },
   {
     "ContainingType": "API_ECommerce.Controllers.ClienteController",
-    "Method": "Login",
-    "RelativePath": "api/Cliente/{email}/{senha}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "senha",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API_ECommerce.Controllers.ClienteController",
     "Method": "BuscarPorId",
     "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "GET",
@@ -94,6 +73,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ECommerce.Controllers.ClienteController",
+    "Method": "Login",
+    "RelativePath": "api/Cliente/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "API_ECommerce.DTOs.LoginDto",
         "IsRequired": true
       }
     ],
@@ -276,7 +271,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pedido",
+        "Name": "pedidoDto",
         "Type": "API_ECommerce.DTOs.PedidoDto",
         "IsRequired": true
       }
