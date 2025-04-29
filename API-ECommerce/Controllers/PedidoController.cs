@@ -31,7 +31,7 @@ public class PedidoController : Controller
     }
 
     [HttpPost]
-    public IActionResult CadastrarProduto(PedidoDto pedido)
+    public IActionResult CadastrarProduto(Pedido pedido)
     {
         _pedidoRepository.Cadastrar(pedido);
 
@@ -39,12 +39,12 @@ public class PedidoController : Controller
     }
 
     [HttpPut]
-    public IActionResult Editar(int id, PedidoDto pedidoDto)
+    public IActionResult Editar(int id, Pedido pedido)
     {
         try
         {
-            _pedidoRepository.Atualizar(id, pedidoDto);
-            return Ok(pedidoDto);
+            _pedidoRepository.Atualizar(id, pedido);
+            return Ok(pedido);
         }
         catch (Exception)
         {

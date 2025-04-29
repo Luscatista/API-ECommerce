@@ -109,6 +109,10 @@ public class ClienteRepository : IClienteRepository
         cliente.Endereco = clienteDto.Endereco;
         cliente.DataCadastro = clienteDto.DataCadastro;
 
+        var passwordService = new PasswordService();
+
+        cliente.Senha = passwordService.HashPassword(cliente);
+
         _context.SaveChanges();
     }
     public void Deletar(int id)
