@@ -4,6 +4,7 @@ using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Repositories;
 using API_ECommerce.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_ECommerce.Controllers;
@@ -19,12 +20,16 @@ public class ClienteController : Controller
     }
 
     [HttpGet]
+    [Authorize]
+
     public IActionResult ListarTodos()
     {
         return Ok(_clienteRepository.ListarTodos());
     }
 
     [HttpGet("{id}")]
+    [Authorize]
+
     public IActionResult BuscarPorId(int id)
     {
         var cliente = _clienteRepository.BuscarPorId(id);
@@ -36,6 +41,8 @@ public class ClienteController : Controller
     }
     
     [HttpGet("/buscar/{nome}")]
+    [Authorize]
+
     public IActionResult BuscarClientePorNome(string nome)
     {
         var clientes = _clienteRepository.BuscarClientePorNome(nome);
@@ -47,6 +54,7 @@ public class ClienteController : Controller
     }
 
     [HttpPost("login")]
+
     public IActionResult Login(LoginDto loginDto)
     {
 
@@ -64,6 +72,8 @@ public class ClienteController : Controller
     }
 
     [HttpPost]
+    [Authorize]
+
     public IActionResult CadastrarCliente(ClienteDto cliente)
     {
         _clienteRepository.Cadastrar(cliente);
@@ -72,6 +82,8 @@ public class ClienteController : Controller
     }
 
     [HttpPut("{id}")]
+    [Authorize]
+
     public IActionResult Editar(int id, ClienteDto clienteDto)
     {
         try
@@ -86,6 +98,8 @@ public class ClienteController : Controller
     }
 
     [HttpDelete("{id}")]
+    [Authorize]
+
     public IActionResult Deletar(int id)
     {
         try

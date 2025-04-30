@@ -1,0 +1,733 @@
+{
+	"info": {
+		"_postman_id": "1b1f6fd8-e172-4f02-b557-3f5693e42794",
+		"name": "Projeto ECommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38752902"
+	},
+	"item": [
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Listar Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscas por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/produto/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeProduto\": \"Placa de vídeo\",\r\n    \"descricao\": \"Placa de vídeo potente\",\r\n    \"preco\": 1200.00,\r\n    \"estoqueDisponivel\": 35,\r\n    \"categoriaProduto\": \"Informática\",\r\n    \"imagem\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeProduto\": \"Placa de vídeo\",\r\n    \"descricao\": \"Placa de vídeo potente\",\r\n    \"preco\": 1800,\r\n    \"estoqueDisponivel\": 5,\r\n    \"categoriaProduto\": \"Informática\",\r\n    \"imagem\": \"\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/produto/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"produto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/produto/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"produto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Listar Todos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb3JnZUBzZW5haS5iciIsImV4cCI6MTc0NTk3NDQ3NiwiaXNzIjoiZWNvbW1lcmNlIiwiYXVkIjoiZWNvbW1lcmNlIn0.KSbUz1BaypblhbkYsW1oQOvj04jln2NMFuZZ6hFDXxw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/cliente",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqb3JnZUBzZW5haS5iciIsImV4cCI6MTc0NTk3NDQ3NiwiaXNzIjoiZWNvbW1lcmNlIiwiYXVkIjoiZWNvbW1lcmNlIn0.KSbUz1BaypblhbkYsW1oQOvj04jln2NMFuZZ6hFDXxw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/cliente/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"cliente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeCompleto\": \"Jeremias Campos\",\r\n    \"email\": \"jeremias@senai.br\",\r\n    \"telefone\": \"(11) 999994567\",\r\n    \"endereco\": \"Rua Marechal, 1500 - São Bernardo do Campo/SP\",\r\n    \"dataCadastro\": \"2025-11-11\",\r\n    \"Senha\": \"123senha123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/cliente",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nomeCompleto\": \"Jeremias Campos dos Reis\",\r\n        \"email\": \"jeremiaReiss@senai.br\",\r\n        \"telefone\": \"(11) 999912345\",\r\n        \"endereco\": \"Rua Marechal, 1210 - São Bernardo do Campo/SP\",\r\n        \"dataCadastro\": \"2025-08-12\",\r\n        \"Senha\": \"123senha123\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/cliente/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"cliente",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/cliente/3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"cliente",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"jorge@senai.br\",\r\n    \"senha\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/cliente/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"cliente",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarClientePorNome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/buscar/Lucas%20Baptista",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"buscar",
+								"Lucas%20Baptista"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagamento",
+			"item": [
+				{
+					"name": "Listar Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/pagamento",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/pagamento/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"pagamento",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusPagamento\": \"Pago\",\r\n    \"formaPagamento\": \"A vista no pix\",\r\n    \"dataPagamento\": \"2023-08-08T00:00:00\",\r\n    \"idPedido\": 2\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/pagamento",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusPagamento\": \"Pago\",\r\n    \"formaPagamento\": \"A vista no pix\",\r\n    \"dataPagamento\": \"2023-08-12T00:00:00\",\r\n    \"idPedido\": 3\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/pagamento/5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"pagamento",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/pagamento",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "ListarTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/Pedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/Pedido/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Pedido",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dataPedido\": \"2025-04-28\",\r\n  \"status\": \"Em andamento\",\r\n  \"valorTotal\": 660,\r\n  \"idCliente\": 2,\r\n  \"produtos\": [1,2]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/Pedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dataPedido\": \"2025-04-28\",\r\n  \"status\": \"Em andamento\",\r\n  \"valorTotal\": 1000,\r\n  \"idCliente\": 2,\r\n  \"produtos\": [1,2]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/Pedido?id=4",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Pedido"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/Pedido/5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"Pedido",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ItemPedido",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/ItemPedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"ItemPedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/ItemPedido/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"ItemPedido",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idPedido\": 2,\r\n  \"idProduto\": 1,\r\n  \"quantidade\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/ItemPedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"ItemPedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"idPedido\": 2,\r\n    \"idProduto\": 2,\r\n    \"quantidade\": 0\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7025/api/ItemPedido?id=8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"ItemPedido"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7025/api/ItemPedido?id=8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7025",
+							"path": [
+								"api",
+								"ItemPedido"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

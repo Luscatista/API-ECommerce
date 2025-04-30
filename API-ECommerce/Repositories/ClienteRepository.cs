@@ -5,6 +5,7 @@ using API_ECommerce.Interfaces;
 using API_ECommerce.Models;
 using API_ECommerce.Services;
 using API_ECommerce.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API_ECommerce.Repositories;
 
@@ -15,6 +16,7 @@ public class ClienteRepository : IClienteRepository
     {
         _context = context;
     }
+
     public List<ClienteViewModel> ListarTodos()
     {
         return _context.Clientes.Select(
